@@ -1,0 +1,262 @@
+/* UNIVERSAL STYLES */
+
+ * {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: #666;
+    font-family: "Garamond", serif;
+    font-size: 0.95em;
+    line-height: 1.5em;
+}
+
+/* Text, links, etc */
+h1, h2, h3, h4, h5, h6, p {
+    color: whitesmoke;
+    text-align: center;
+}
+
+h1 {
+    font-weight: normal;
+    margin: auto;
+    line-height: 2.5em;
+}
+
+h2, h3 {
+    font-weight: normal;
+    margin-bottom: 10px;
+    margin-left: 1em;
+    line-height: 1em;
+}
+
+p {
+    font-size: large;
+    margin-top: 10px;
+}
+
+.justify > p {
+    margin: 0;
+}
+
+a {
+    color:whitesmoke;
+    background-color: darkred;
+    text-decoration: none;
+    padding: 5px;
+}
+
+a:hover {
+    color: whitesmoke;
+    background-color: darkred;
+    text-decoration: none;
+}
+
+.section > ul {
+    list-style-type: none;
+    margin-top: 10px;
+}
+
+li {
+    color: whitesmoke;
+    font-size: medium;
+}
+
+label {
+    color: whitesmoke;
+    display: block;
+    font-weight: bold;
+    font-size: larger;
+    display: block;
+    margin-bottom: 15px;
+    margin-left: 60px;
+}
+
+.error {
+    color: whitesmoke;
+    display: block;
+    font-size: large;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* CONTAINERS, CLASSES and IDS */
+main {
+    width: 100%;
+}
+/* Creates the mini-sections with black backgrounds */
+div.section {
+    background-color: black;
+    min-height: 350px;
+    margin-top: 25px;
+    padding: 15px;
+}
+
+div.section > p {
+    text-align: center;
+}
+
+.justify {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+}
+
+footer {
+    clear: both;
+    text-align: center;
+    padding: 1em;
+}
+
+/* Creates and styles a temporary text button */
+.button {
+    padding: 10px;
+    display: block;
+    width: 75px;
+    text-align: center;
+    margin: 10px auto;
+}
+
+.button:hover {
+    font-size: large;
+}
+
+div #aboutUs {
+    padding: 0 20px;
+}
+
+/* Creates the two-column layout for the performer page*/
+.my-column-short {
+    float: left;
+    width: 30%;
+    padding: 10px;
+  }
+.my-column-long {
+    float: left;
+    width: 65%;
+    padding: 10px;
+  }
+/* Clear floats after the columns */
+.my-row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+/* Formats the images for the performer page */
+.performer-thumbnail {
+    max-width:100%;
+    margin: auto;
+}
+
+/* Formats the text for the performer page */
+.bio-left {
+    text-align: left;
+    padding: none;
+}
+
+p.bio-left {
+    font-size: large;
+}
+
+.bio-right {
+    text-align: right;
+    padding: none;
+}
+
+p.bio-right {
+    font-size: large;
+}
+
+form {
+    max-width: 500px;
+    margin: auto;
+    padding: 10px;
+    padding-bottom: 35px;
+}
+
+input {
+    width: 300px;
+    height: 35px;
+    margin-left: 90px;
+    margin-bottom: 25px;
+    display: block;
+}
+
+textarea {
+    width: 300px;
+    height: 250px;
+    overflow: scroll;
+    margin-left: 90px;
+    margin-bottom: 25px;
+    display: block;
+}
+
+/* DESKTOP */
+@media all and (min-width:1200px) {
+    
+    div.section {
+        width: 94%;
+        margin: 30px auto;
+    }
+    
+    h1 {
+        width: 79%;
+        padding-left: 1%;
+    }
+    
+    p {
+        margin: 1em;
+    }
+
+    section > ul {
+        margin-left: 10%;
+    }
+}
+
+/* TABLET */
+@media all and (min-width:501px) and (max-width:1199px) {
+    h1 {
+        width: 89%;
+        padding-left: 1%;
+    }
+    .my-column-short {
+        width: 25%;
+      }
+    .my-column-long {
+        width: 60%;
+      }
+}
+
+/* PHONE */
+@media all and (max-width:500px) {
+    h1 {
+        width: 99%;
+        padding-left: 1%;
+    }
+
+    .my-column-short {
+        width: 100%;
+      }
+    .my-column-long {
+        width: 100%;
+      }
+}
+
+/* FADE ANIMATION */
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.4s;
+    animation-name: fade;
+    animation-duration: 1.4s;
+  }
+  @-webkit-keyframes fade {
+    from {opacity: .5}
+    to {opacity: 2}
+  }
+  
+  @keyframes fade {
+    from {opacity: .5}
+    to {opacity: 2}
+  }

@@ -1,0 +1,101 @@
+/* Global rules */
+.topnav {
+    margin: auto;
+    background-color: black;
+    overflow: hidden;
+    width: 100%;
+}
+
+.topnav li {
+    float: left;
+    display: block;
+    text-decoration: none;
+    color: whitesmoke;
+    text-align: center;
+    padding: 12px 12px;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.topnav a {
+    color: whitesmoke;
+    background-color: transparent;
+}
+
+.topnav li:hover, .active {
+    background-color: darkred;
+    height: 100%;
+}
+
+.topnav .icon {
+    display: none;
+}
+
+/* Responsive rules - apply when screen width is less than 1200px */
+
+@media screen and (max-width: 1199px) {
+    .topnav li:not(:first-child) {
+        display: none;
+    }
+    
+    .topnav a.icon {
+        float: right;
+        display: block;
+        margin: auto;
+        font-size: large;
+        font-weight: bold;
+        background: none;
+        text-align: center;
+    }
+    
+    .topnav.responsive {
+        position: relative;
+    }
+    
+    .topnav.responsive li {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+    }
+    
+    .topnav.responsive li:hover {
+        width: 100%;
+        height: 100%;
+        background: darkred;
+    }
+
+    .topnav.responsive a.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .topnav.responsive ul {
+        width: 100%;
+    }
+}
+
+
+/* DESKTOP */
+/* @media all and (min-width:1200px) {
+    .topnav {
+        width: 81%;
+    }
+} */
+
+/* TABLET */
+/* @media all and (min-width:501px) and (max-width:1199px) {
+    .topnav {
+        width: 91%;
+    }
+} */
+
+/* PHONE */
+/* @media all and (max-width:500px) {
+    .topnav {
+        width: 100%;
+    }
+} */
