@@ -1,5 +1,4 @@
 <?php 
-    include('./includes/header.php');
     // Initialize our variables
     $name = '';
     $name_err = '';
@@ -15,34 +14,34 @@
     if($_SERVER['REQUEST_METHOD'] =='POST'){
         // then check to see if our form has been filled!
         // if empty, assign error. if not, assign variable.
-        if (empty(($_POST)['name'])){
+        if (empty($_POST['name'])){
             $name_err = 'Please fill out your first name.';
         } else {
             $name = $_POST['name'];
         }
 
-        if (empty(($_POST)['pronouns'])) {
+        if (empty($_POST['pronouns'])) {
             $pronouns = 'Client has declined to give pronouns.';
         }
         else {
             $pronouns = $_POST['pronouns'];
         }
 
-        if (empty(($_POST)['email'])) {
+        if (empty($_POST['email'])) {
             $email_err = 'Please fill out your email.';
         }
         else {
             $email = $_POST['email'];
         }
 
-        if (empty(($_POST)['phone'])) {
+        if (empty($_POST['phone'])) {
             $phone = 'Client has declined to give phone number.';
         }
         else {
             $phone = $_POST['phone'];
         }
 
-        if (empty(($_POST)['message'])) {
+        if (empty($_POST['message'])) {
             $message_err = 'Please fill out your message.';
         }
         else {
@@ -53,28 +52,33 @@
         if (isset($_POST['name'],
         $_POST['email'],
         $_POST['message'])) {
-            $to = 'dummy@email.com';
+            $to = 'emelyn.melton@gmail.com';
             $subject ='Test Email';
             $body = '
-                <b>Name: </b>'.$name.' '.PHP_EOL.'
-                <b>Pronouns: </b>'.$pronouns.' '.PHP_EOL.'
-                <b>E-mail: </b>'.$email.' '.PHP_EOL.'
-                <b>Phone: </b>'.$phone.' '.PHP_EOL.'
-                <b>Message: </b>'.$message.' '.PHP_EOL.'
+                Name: '.$name.' '.PHP_EOL.'
+                Pronouns: '.$pronouns.' '.PHP_EOL.'
+                E-mail: '.$email.' '.PHP_EOL.'
+                Phone: '.$phone.' '.PHP_EOL.'
+                Message: '.$message.' '.PHP_EOL.'
             ';
-            $headers = array(
-                'From' => 'noreply@mystudentswa.com'
-            );
-            if(!empty($name && $pronouns && $email && $phone && $message)) {
-                mail($to, $subject, $body, $headers);
-                header('Location:thanks.php');
+            if(!empty($name) && !empty($pronouns) && !empty($email) && !empty($phone) && !empty($message)) { //form validation
+                if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])) { //recaptcha validation-- has it been filled out
+                    $secretAPIkey = '6LcCHYcjAAAAAJrjMn0UGhibNKGv1h3oIwJa6iPh'; // secret key
+                    $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secretAPIkey.'&response='.$_POST['g-recaptcha-response']); //recpatcha response-- does it check out on googles end?
+                    $response = json_decode($verifyResponse); //decode googles response
+                    if($response->success) { //if google says we're good to go, send the email!
+                        mail($to, $subject, $body, 'noreply@mystudentswa.com');
+                        header('Location:thanks.php');
+                    }
+                }
             }
         }
     } // END if request_method == post
+    include('./includes/header.php');
 ?>
     <main>
         <div class="section">
-            <h1 style="text-align: center">Contact Us</h1>
+            <h1>Contact Us</h1>
             <form action="<?php echo htmlspecialchars(($_SERVER['PHP_SELF'])); ?>" method="post">
                 <label>Name</label>
                 <input type="text" name="name" value="">
@@ -94,10 +98,13 @@
                 <textarea name="message"></textarea>
                 <span class="error"><?php echo $message_err; ?></span>
 
+                <div class="g-recaptcha" data-sitekey="6LcCHYcjAAAAAOMRCtEjpKLpVf3O3qS4QpC0muMl"></div>
+                
                 <input type="submit" value="Submit your Query to the House of Cox">
             </form>
         </div>
     </main>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <?php
     include('./includes/footer.php');
 ?>
