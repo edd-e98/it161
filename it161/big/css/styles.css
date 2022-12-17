@@ -20,14 +20,13 @@ h1, h2, h3, h4, h5, h6, p {
 
 h1 {
     font-weight: normal;
-    margin: auto;
+    margin: 10px auto;
     line-height: 2.5em;
 }
 
 h2, h3 {
     font-weight: normal;
-    margin-bottom: 10px;
-    margin-left: 1em;
+    margin: 10px auto;;
     line-height: 1em;
 }
 
@@ -38,6 +37,7 @@ p {
 
 .justify > p {
     margin: 0;
+    margin-bottom: 15px;
 }
 
 a {
@@ -114,7 +114,6 @@ footer {
 .button {
     padding: 10px;
     display: block;
-    width: 75px;
     text-align: center;
     margin: 10px auto;
 }
@@ -193,6 +192,13 @@ textarea {
     display: block;
 }
 
+.g-recaptcha {
+    margin: auto;
+    margin-left: 90px;
+    margin-bottom: 25px;
+}
+
+
 /* DESKTOP */
 @media all and (min-width:1200px) {
     
@@ -227,7 +233,6 @@ textarea {
     .my-column-long {
         width: 60%;
       }
-}
 
 /* PHONE */
 @media all and (max-width:500px) {
@@ -238,9 +243,21 @@ textarea {
 
     .my-column-short {
         width: 100%;
+        float:none;
+        text-align: center;
       }
     .my-column-long {
         width: 100%;
+        float: none;
+        text-align: center;
+      }
+    
+      p.bio-left {
+        text-align: center;
+      }
+
+      p.bio-right {
+        text-align: center;
       }
 }
 
